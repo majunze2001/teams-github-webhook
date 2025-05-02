@@ -1,6 +1,6 @@
 # A Github Webhook Proxy Server for Microsoft Teams
 
-**Currently only support commit**
+**Currently only supports tracking commits**
 
 Example `.env`
 ```
