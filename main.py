@@ -1,4 +1,3 @@
-from mangum import Mangum
 import logging
 import os
 from typing import Any, Dict, List, Optional
@@ -291,8 +290,6 @@ async def health_check():
     """Health check endpoint."""
     return {"status": "healthy"}
 
-
-handler = Mangum(app)
 
 # Main entrypoint
 if __name__ == "__main__":
