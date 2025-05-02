@@ -158,8 +158,10 @@ class GitHubWebhookHandler:
         # Create the main text block
         if commit_count == 1:
             main_text = f"[1 new commit]({payload.compare}) pushed to `{branch}` by [{latest_author}]({author_url})"
+            summary = f"1 new commit pushed to `{branch}` by {latest_author}"
         else:
             main_text = f"[{commit_count} new commits]({payload.compare}) pushed to `{branch}` by [{latest_author}]({author_url})"
+            summary = f"{commit_count} new commits pushed to `{branch}` by {latest_author}"
 
         main_block = {"type": "TextBlock", "text": main_text, "wrap": True}
         text_blocks.append(main_block)
@@ -192,6 +194,7 @@ class GitHubWebhookHandler:
         return (
             {
                 "type": "message",
+                "summary" : summary,
                 "attachments": [
                     {
                         "contentType": "application/vnd.microsoft.card.adaptive",
