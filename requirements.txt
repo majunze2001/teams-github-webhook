@@ -2,3 +2,5 @@ python-dotenv
 fastapi
 uvicorn
 aiohttp
+mangum
+pydantic

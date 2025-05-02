@@ -1,3 +1,4 @@
+from mangum import Mangum
 import logging
 import os
 from typing import Any, Dict, List, Optional
@@ -161,7 +162,9 @@ class GitHubWebhookHandler:
             summary = f"1 new commit pushed to `{branch}` by {latest_author}"
         else:
             main_text = f"[{commit_count} new commits]({payload.compare}) pushed to `{branch}` by [{latest_author}]({author_url})"
-            summary = f"{commit_count} new commits pushed to `{branch}` by {latest_author}"
+            summary = (
+                f"{commit_count} new commits pushed to `{branch}` by {latest_author}"
+            )
 
         main_block = {"type": "TextBlock", "text": main_text, "wrap": True}
         text_blocks.append(main_block)
@@ -194,7 +197,7 @@ class GitHubWebhookHandler:
         return (
             {
                 "type": "message",
-                "summary" : summary,
+                "summary": summary,
                 "attachments": [
                     {
                         "contentType": "application/vnd.microsoft.card.adaptive",
@@ -288,6 +291,8 @@ async def health_check():
     """Health check endpoint."""
     return {"status": "healthy"}
 
+
+handler = Mangum(app)
 
 # Main entrypoint
 if __name__ == "__main__":
