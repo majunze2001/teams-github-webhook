@@ -298,7 +298,7 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=PORT,
-        workers=4,
+        workers=1,
         log_level="info",
         access_log=True,
         use_colors=False,
